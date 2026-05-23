@@ -2,7 +2,7 @@ module "sg" {
   source  = "../../../modules/security_group"
   create = true
   team = var.team
-  vpc_id = var.vpc_id
+  vpc_id = module.rds_vpc.vpc_id
   ingress_with_cidr_blocks = [
     {
         from_port   = 5432
@@ -15,4 +15,6 @@ module "sg" {
     "10.75.128.249/32",
     "10.75.128.220/32"
   ]
+
+  depends_on = [module.rds_vpc]
 }

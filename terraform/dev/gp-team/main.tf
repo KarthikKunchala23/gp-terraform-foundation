@@ -1,5 +1,5 @@
 terraform {
-    required_version = ">= 1.6.0"
+    required_version = ">= 1.0"
 
     required_providers {
       aws = {
@@ -22,7 +22,7 @@ provider "aws" {
     default_tags {
       tags = {
         team = var.team
-        env  = var.env
+        environment  = var.environment
         region = "ap-south-1"
         created_by = "gp-terraform-foundation"
       }

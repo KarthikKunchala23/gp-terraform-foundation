@@ -1,5 +1,5 @@
 locals {
-  vpc_id = "vpc-0dc68345b04a4e41d"
+  vpc_id = var.vpc_id
   github_runners_ingress = [
     {
         from_port = 5432
@@ -15,7 +15,7 @@ module "gp_rds_sg" {
   source  = "../__security_groups"
   name    = "${var.team}-rds-sg"
   description = "Security group for RDS instances in ${var.team} environment"
-  vpc_id = var.vpc_id
+  vpc_id = local.vpc_id
   ingress_with_cidr_blocks = concat(local.github_runners_ingress, var.ingress_with_cidr_blocks)
   egress_with_cidr_blocks = var.egress_with_cidr_blocks
   ingress_with_prefix_list_ids = var.ingress_with_prefix_list_ids
