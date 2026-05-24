@@ -13,7 +13,8 @@ module "sg" {
   ]
   additional_rds_postgres_cidr = [
     "10.75.128.249/32",
-    "10.75.128.220/32"
+    "10.75.128.220/32",
+    "10.75.128.221/32"
   ]
 
   depends_on = [module.rds_vpc]
