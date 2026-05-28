@@ -48,10 +48,10 @@ output "db_instance_domain_iam_role_name" {
   value = module.rds.db_instance_domain_iam_role_name
 }
 
-output "db_instance_domain_output" {
-  description = "The organizational unit of the Active Directory domain for the RDS instance"
-  value = module.rds.db_instance_domain_ouput
-}
+# output "db_instance_domain_output" {
+#   description = "The organizational unit of the Active Directory domain for the RDS instance"
+#   value = module.rds.db_instance_domain_ouput
+# }
 
 output "db_instance_endpoint" {
   description = "The endpoint of the RDS instance"
