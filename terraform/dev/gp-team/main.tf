@@ -21,10 +21,10 @@ provider "aws" {
     region = "ap-south-1"
     default_tags {
       tags = {
-        team = var.team
-        environment  = var.environment
-        region = "ap-south-1"
-        created_by = "gp-terraform-foundation"
+        Team = var.team
+        Environment = var.environment
+        Region = "ap-south-1"
+        Created_By = "gp-terraform-foundation"
       }
     }
 }

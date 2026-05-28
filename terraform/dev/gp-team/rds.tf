@@ -14,7 +14,7 @@ module "db" {
     rds_create_cloudwatch_log_group = true
 
     rds_db_name = "mydb"
-    rds_username = "admin"
+    rds_username = "dbadmin"
     rds_ports = 5432
 
     rds_manage_master_user_password_rotation = true
