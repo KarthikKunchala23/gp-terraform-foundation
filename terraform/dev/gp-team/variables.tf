@@ -349,3 +349,9 @@ variable "rds_cloudwatch_log_group_tags" {
     type = map(string)
     default = {}
 }
+
+variable "rds_publicly_accessible" {
+    description = "Whether the DB instance is publicly accessible."
+    type = bool
+    default = false
+}

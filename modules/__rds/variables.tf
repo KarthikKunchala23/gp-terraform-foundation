@@ -185,3 +185,8 @@ variable "rds_cloudwatch_log_group_tags" {
     description = "A map of tags to assign to the CloudWatch Log Group."
     type = map(string)
 }
+
+variable "rds_publicly_accessible" {
+    description = "Whether the DB instance is publicly accessible."
+    type = bool
+}

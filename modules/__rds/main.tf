@@ -15,6 +15,7 @@ module "rds" {
     db_name = var.rds_db_name
     username = var.rds_username
     port = var.rds_ports
+    publicly_accessible = var.rds_publicly_accessible
     
     manage_master_user_password_rotation = var.rds_manage_master_user_password_rotation
     master_user_password_rotate_immediately = var.rds_master_user_password_rotate_immediately

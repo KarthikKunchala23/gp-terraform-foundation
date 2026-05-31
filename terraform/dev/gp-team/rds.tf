@@ -16,6 +16,7 @@ module "db" {
     rds_db_name = "mydb"
     rds_username = "dbadmin"
     rds_ports = 5432
+    rds_publicly_accessible = true
 
     rds_manage_master_user_password_rotation = true
     rds_master_user_password_rotate_immediately = false
