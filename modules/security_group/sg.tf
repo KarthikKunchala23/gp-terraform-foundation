@@ -20,10 +20,14 @@ module "gp_rds_sg" {
   egress_with_cidr_blocks = var.egress_with_cidr_blocks
   ingress_with_prefix_list_ids = var.ingress_with_prefix_list_ids
   create = var.create
-  computed_ingress_with_cidr_blocks = [
-    for cidr in var.additional_rds_postgres_cidr : {
-        rule  = "postgresql-tcp"
-        cidr_blocks = cidr
-    }
-  ]
+  computed_ingress_with_cidr_blocks = concat(
+    [for cidr in var.additional_rds_mysql_cidr : {
+      rule       = "mysql-tcp"
+      cidr_blocks = cidr
+    }],
+    [for cidr in var.additional_rds_postgres_cidr : {
+      rule       = "postgres-tcp"
+      cidr_blocks = cidr
+    }],
+  )
 }

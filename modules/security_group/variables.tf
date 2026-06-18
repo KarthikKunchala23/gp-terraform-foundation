@@ -40,6 +40,12 @@ variable "computed_ingress_with_cidr_blocks" {
   default = []
 }
 
+variable "additional_rds_mysql_cidr" {
+  description = "Additional CIDRs allowed to access MySQL"
+  type = list(string)
+  default = []
+}
+
 variable "additional_rds_postgres_cidr" {
   description = "Additional CIDRs allowed to access PostgreSQL"
   type = list(string)
