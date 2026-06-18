@@ -1,7 +1,7 @@
 ## RDS Module
 module "db_mysql" {
     source = "../../../modules/__rds"
-    rds_identifier = local.name
+    rds_identifier = local.rds_name
     rds_engine = "mysql"
     rds_engine_version = "8.0"
     rds_engine_lifecycle_support = "open-source-rds-extended-support-disabled"
@@ -13,8 +13,8 @@ module "db_mysql" {
     rds_max_allocated_storage = 100
     rds_create_cloudwatch_log_group = true
 
-    rds_db_name = "mydb"
-    rds_username = "dbadmin"
+    rds_db_name = "catalogdb"
+    rds_username = "catalog"
     rds_ports = 3306
     rds_publicly_accessible = true
 
@@ -29,27 +29,34 @@ module "db_mysql" {
     rds_maintenance_window = "Mon:00:00-Mon:03:00"
     rds_backup_retention_period = 7
     rds_backup_window = "03:00-04:00"
-    rds_enabled_cloudwatch_logs_exports = ["mysql", "upgrade"]
+    rds_enabled_cloudwatch_logs_exports = ["error", "general", "slowquery"]
 
     rds_skip_final_snapshot = true
     rds_deletion_protection = false
 
-    rds_performance_insights_enabled = true
-    rds_performance_insights_retention_period = 7
+    rds_performance_insights_enabled = false
+    rds_performance_insights_retention_period = null
     rds_create_monitoring_role = true
     rds_monitoring_interval = 60
-    rds_monitoring_role_name = "${local.name}-monitoring-role"
+    rds_monitoring_role_name = "${local.rds_name}-monitoring-role"
     rds_monitoring_role_use_name_prefix = true
-    rds_monitoring_role_description = "Monitoring role for ${local.name} RDS instance"
+    rds_monitoring_role_description = "Monitoring role for ${local.rds_name} RDS instance"
 
     rds_parameters = [
         {
-            name  = "autovacuum"
+            name = "slow_query_log"
             value = "1"
+            apply_method = "immediate"
         },
         {
-            name  = "client_encoding"
-            value = "UTF8"
+            name = "long_query_time"
+            value = "2"
+            apply_method = "immediate"
+        },
+        {
+            name = "log_output"
+            value = "FILE"
+            apply_method = "immediate"
         }
     ]
 
