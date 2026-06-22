@@ -1,3 +1,12 @@
+## Secrets Manager for RDS Master User Password
+# data "aws_secretsmanager_secret" "rds_master_user_password" {
+#     name = "${local.rds_password_secret_name}"
+# }
+
+# data "aws_secretsmanager_secret_version" "rds_master_user_password" {
+#     secret_id = data.aws_secretsmanager_secret.rds_master_user_password.id
+# }
+
 ## RDS Module
 module "db_mysql" {
     source = "../../../modules/__rds"
@@ -14,7 +23,8 @@ module "db_mysql" {
     rds_create_cloudwatch_log_group = true
 
     rds_db_name = "catalogdb"
-    rds_username = "catalog"
+    rds_username = "catalog"    # rds_password = local.rds_secret.password
+    # rds_password_version = local.rds_secret.version
     rds_ports = 3306
     rds_publicly_accessible = true
 
