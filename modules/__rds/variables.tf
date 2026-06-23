@@ -53,6 +53,11 @@ variable "rds_username" {
     type = string
 }
 
+# variable "rds_password" {
+#     description = "The password for the database master user."
+#     type = string
+# }
+
 variable "rds_ports" {
     description = "The port on which the DB instance will accept connections."
     type = number
@@ -190,3 +195,8 @@ variable "rds_publicly_accessible" {
     description = "Whether the DB instance is publicly accessible."
     type = bool
 }
+
+# variable "rds_password_version" {
+#     description = "The version of the RDS master user password to use. This is used for password rotation."
+#     type = string
+# }
