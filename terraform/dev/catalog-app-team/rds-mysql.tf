@@ -26,7 +26,7 @@ module "db_mysql" {
     rds_username = "catalog"    # rds_password = local.rds_secret.password
     # rds_password_version = local.rds_secret.version
     rds_ports = 3306
-    rds_publicly_accessible = true
+    rds_publicly_accessible = false
 
     rds_manage_master_user_password_rotation = true
     rds_master_user_password_rotate_immediately = false
