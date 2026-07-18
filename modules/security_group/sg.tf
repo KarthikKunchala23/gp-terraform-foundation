@@ -11,23 +11,23 @@ locals {
   ]
 }
 
-module "gp_rds_sg" {
+module "gp_sg" {
   source  = "../__security_groups"
-  name    = "${var.team}-rds-sg"
-  description = "Security group for RDS instances in ${var.team} environment"
+  name    = "${var.service}-sg"
+  description = "Security group for ${var.service}"
   vpc_id = local.vpc_id
   ingress_with_cidr_blocks = concat(local.github_runners_ingress, var.ingress_with_cidr_blocks)
   egress_with_cidr_blocks = var.egress_with_cidr_blocks
   ingress_with_prefix_list_ids = var.ingress_with_prefix_list_ids
   create = var.create
-  computed_ingress_with_cidr_blocks = concat(
-    [for cidr in var.additional_rds_mysql_cidr : {
-      rule       = "mysql-tcp"
-      cidr_blocks = cidr
-    }],
-    [for cidr in var.additional_rds_postgres_cidr : {
-      rule       = "postgres-tcp"
-      cidr_blocks = cidr
-    }],
-  )
+  # computed_ingress_with_cidr_blocks = concat(
+  #   [for cidr in var.additional_rds_mysql_cidr : {
+  #     rule       = "mysql-tcp"
+  #     cidr_blocks = cidr
+  #   }],
+  #   [for cidr in var.additional_rds_postgres_cidr : {
+  #     rule       = "postgresql-tcp"
+  #     cidr_blocks = cidr
+  #   }],
+  # )
 }

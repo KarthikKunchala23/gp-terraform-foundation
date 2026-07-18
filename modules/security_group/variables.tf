@@ -1,5 +1,5 @@
-variable "team" {
-  description = "Team responsible for the security group"
+variable "service" {
+  description = "service responsible for the security group"
   type        = string
 }
 
@@ -34,20 +34,20 @@ variable "create" {
   default     = true
 }
 
-variable "computed_ingress_with_cidr_blocks" {
-  description = "List of computed ingress rules to create with CIDRs blocks"
-  type = list(map(string))
-  default = []
-}
+# variable "computed_ingress_with_cidr_blocks" {
+#   description = "List of computed ingress rules to create with CIDRs blocks"
+#   type = list(map(string))
+#   default = []
+# }
 
-variable "additional_rds_mysql_cidr" {
-  description = "Additional CIDRs allowed to access MySQL"
-  type = list(string)
-  default = []
-}
+# variable "additional_rds_mysql_cidr" {
+#   description = "Additional CIDRs allowed to access MySQL"
+#   type = list(string)
+#   default = []
+# }
 
-variable "additional_rds_postgres_cidr" {
-  description = "Additional CIDRs allowed to access PostgreSQL"
-  type = list(string)
-  default = []
-}
+# variable "additional_rds_postgres_cidr" {
+#   description = "Additional CIDRs allowed to access PostgreSQL"
+#   type = list(string)
+#   default = []
+# }
