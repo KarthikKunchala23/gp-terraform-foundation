@@ -1,5 +1,5 @@
 module "rds_vpc" {
-    source = "../../../modules/__vpc"
+    source = "../../../../modules/__vpc"
 
     vpc_name = local.vpc_name
     vpc_cidr = local.vpc_cidr

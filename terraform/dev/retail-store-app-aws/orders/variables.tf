@@ -1,6 +1,6 @@
 variable "team" {
   type = string
-  default = "gp-team"
+  default = "orders"
 }
 
 variable "env" {
