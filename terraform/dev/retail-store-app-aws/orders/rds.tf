@@ -80,9 +80,9 @@ module "orders-rds-pgsql" {
     max_allocated_storage = 100
     username = local.retail_store_secret.username
     password = local.retail_store_secret.password
-    subnet_ids = [ each.value ]
+    db_subnet_ids = [ each.value ]
+    db_subnet_group_name = "orders-db-subnet-group"
     vpc_id = var.vpc_id
     db_name = "catalogdb"
     security_group_ids = [ module.psql_sg.security_group_id ]
-    db_subnet_group = each.value
 }
