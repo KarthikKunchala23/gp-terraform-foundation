@@ -75,4 +75,5 @@ resource "aws_db_instance" "this" {
   vpc_security_group_ids  = var.security_group_ids
   skip_final_snapshot     = true    
   publicly_accessible     = false
+  
 }

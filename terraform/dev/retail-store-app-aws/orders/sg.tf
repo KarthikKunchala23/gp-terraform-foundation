@@ -2,7 +2,7 @@ module "psql_sg" {
   source  = "../../../../modules/security_group"
   create = true
   service = "rds-psql-orders"
-  vpc_id = module.rds_vpc.vpc_id
+  vpc_id = data.aws_vpc.retail-vpc.id
   ingress_with_cidr_blocks = [
     {
         from_port   = 5432
@@ -16,6 +16,4 @@ module "psql_sg" {
   #   "10.75.128.220/32",
   #   "10.75.128.221/32"
   # ]
-
-  depends_on = [module.rds_vpc]
 }
