@@ -20,7 +20,7 @@ data "aws_subnets" "retail-snet" {
   }
 
   tags = {
-    Name = "retail-store-app-backend-vpc-db-ap-south-1a"
+    Name = "retail-store-app-backend-vpc-db-*"
   }
 }
 

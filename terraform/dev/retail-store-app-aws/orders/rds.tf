@@ -71,7 +71,6 @@
 
 module "orders-rds-pgsql" {
     source = "../../../../modules/__rds"
-    for_each = toset(data.aws_subnets.retail-snet.ids)
     name = local.rds_name
     engine = "postgres"
     engine_version = "18.3"
@@ -80,7 +79,7 @@ module "orders-rds-pgsql" {
     max_allocated_storage = 100
     username = local.retail_store_secret.username
     password = local.retail_store_secret.password
-    db_subnet_ids = [ each.value ]
+    db_subnet_ids = data.aws_subnets.retail-snet.ids
     db_subnet_group_name = "orders-db-subnet-group"
     vpc_id = var.vpc_id
     db_name = "catalogdb"
