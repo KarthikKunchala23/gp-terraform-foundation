@@ -99,9 +99,9 @@ module "catalog-rds-mysql" {
     max_allocated_storage = 100
     username = local.retail_store_secret.username
     password = local.retail_store_secret.password
-    subnet_ids = [ module.rds_vpc.database_subnet_group ]
-    vpc_id = module.rds_vpc.vpc_id
+    vpc_id = data.aws_vpc.retail-vpc-catalog.id
+    db_subnet_group_name = "catalog-mysql-subnet-group"
+    db_subnet_ids = data.aws_subnets.retail-snet-catalog.ids
     db_name = "catalogdb"
     security_group_ids = [ module.mysql-rds-sg.security_group_id ]
-    db_subnet_group = module.rds_vpc.database_subnet_group
 }

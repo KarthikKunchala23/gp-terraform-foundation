@@ -81,7 +81,7 @@ module "orders-rds-pgsql" {
     password = local.retail_store_secret.password
     db_subnet_ids = data.aws_subnets.retail-snet.ids
     db_subnet_group_name = "orders-db-subnet-group"
-    vpc_id = var.vpc_id
-    db_name = "catalogdb"
+    vpc_id = data.aws_vpc.retail-vpc.id
+    db_name = "ordersdb"
     security_group_ids = [ module.psql_sg.security_group_id ]
 }
