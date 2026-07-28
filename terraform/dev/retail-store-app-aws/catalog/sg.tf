@@ -2,7 +2,7 @@ module "mysql-rds-sg" {
   source  = "../../../../modules/security_group"
   create = true
   service = "rds-msql-catalog"
-  vpc_id = module.rds_vpc.vpc_id
+  vpc_id = data.aws_vpc.retail-vpc-catalog.id
   ingress_with_cidr_blocks = [
     {
         from_port   = 3306
@@ -14,6 +14,4 @@ module "mysql-rds-sg" {
   # additional_rds_mysql_cidr = [
   #   "10.0.0.0/16"
   # ]
-
-  depends_on = [module.rds_vpc]
 }

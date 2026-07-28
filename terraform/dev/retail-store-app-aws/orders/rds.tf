@@ -73,15 +73,15 @@ module "orders-rds-pgsql" {
     source = "../../../../modules/__rds"
     name = local.rds_name
     engine = "postgres"
-    engine_version = "8.0"
+    engine_version = "18.3"
     instance_class = "db.t3.medium"
     allocated_storage = 20
     max_allocated_storage = 100
     username = local.retail_store_secret.username
     password = local.retail_store_secret.password
-    subnet_ids = [ module.rds_vpc.database_subnet_group ]
-    vpc_id = module.rds_vpc.vpc_id
-    db_name = "catalogdb"
+    db_subnet_ids = data.aws_subnets.retail-snet.ids
+    db_subnet_group_name = "orders-db-subnet-group"
+    vpc_id = data.aws_vpc.retail-vpc.id
+    db_name = "ordersdb"
     security_group_ids = [ module.psql_sg.security_group_id ]
-    db_subnet_group = module.rds_vpc.database_subnet_group
 }

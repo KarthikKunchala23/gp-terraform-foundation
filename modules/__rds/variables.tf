@@ -242,10 +242,10 @@ variable "username" {
 
 
 
-variable "subnet_ids" {
-  description = "List of private subnet IDs"
-  type        = list(string)
-}
+# variable "subnet_ids" {
+#   description = "List of private subnet IDs"
+#   type        = list(string)
+# }
 
 
 variable "vpc_id" {
@@ -270,7 +270,17 @@ variable "security_group_ids" {
   type = list(string)
 }
 
-variable "db_subnet_group" {
-  description = "subnet group for db"
+# variable "db_subnet_group" {
+#   description = "subnet group for db"
+#   type = string
+# }
+
+variable "db_subnet_group_name" {
+  description = "Name of the Database Subnet Groups"
   type = string
+}
+
+variable "db_subnet_ids" {
+  description = "Subnet IDs of the Database"
+  type = list(string)
 }

@@ -1,5 +1,8 @@
+data "aws_vpc" "retail-vpc" {
+  id = var.vpc_id
+}
+
 locals {
-  vpc_id = var.vpc_id
   github_runners_ingress = [
     {
         from_port = 5432
@@ -15,7 +18,7 @@ module "gp_sg" {
   source  = "../__security_groups"
   name    = "${var.service}-sg"
   description = "Security group for ${var.service}"
-  vpc_id = local.vpc_id
+  vpc_id = data.aws_vpc.retail-vpc.id
   ingress_with_cidr_blocks = concat(local.github_runners_ingress, var.ingress_with_cidr_blocks)
   egress_with_cidr_blocks = var.egress_with_cidr_blocks
   ingress_with_prefix_list_ids = var.ingress_with_prefix_list_ids
