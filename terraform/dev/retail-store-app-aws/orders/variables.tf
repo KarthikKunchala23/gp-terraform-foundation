@@ -11,7 +11,7 @@ variable "env" {
 variable "vpc_id" {
   description = "vpc id for sg"
   type = string
-  default = "vpc-0883e1a6b6b8f4685"
+  default = "vpc-0ff8ffcc424901243"
 }
 
 ## VPC Variables
