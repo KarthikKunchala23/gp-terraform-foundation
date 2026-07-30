@@ -5,7 +5,7 @@ variable "team" {
 
 variable "env" {
   type = string
-  default = null
+  default = "dev"
 }
 
 variable "vpc_id" {
