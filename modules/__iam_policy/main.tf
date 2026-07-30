@@ -1,5 +1,5 @@
 resource "aws_iam_policy" "policy" {
-for_each = toset(var.policy)
+  for_each = toset(var.policy)
 
   name        = "${var.team}-${var.name}"
   path        = var.path
