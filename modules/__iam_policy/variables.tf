@@ -10,7 +10,7 @@ variable "name" {
 
 variable "policy" {
   description = "Name of the policy or arn"
-  type = string
+  type = list(string)
 }
 
 variable "path" {
