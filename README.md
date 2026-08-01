@@ -134,7 +134,7 @@ This approach provides:
 ```hcl
 module "carts_dynamodb" {
 
-  source = "../../../..modules/__dynamodb"
+  source = "../../../../modules/__dynamodb"
 
   name         = "carts-table"
   billing_mode = "PAY_PER_REQUEST"
