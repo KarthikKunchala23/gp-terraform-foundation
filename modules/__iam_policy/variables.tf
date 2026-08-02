@@ -10,7 +10,11 @@ variable "name" {
 
 variable "policy" {
   description = "Name of the policy or arn"
+<<<<<<< HEAD
   type = string
+=======
+  type = list(string)
+>>>>>>> cbbb6cea38fe8ada970997e6ec3aa4aa102cb3a6
 }
 
 variable "path" {

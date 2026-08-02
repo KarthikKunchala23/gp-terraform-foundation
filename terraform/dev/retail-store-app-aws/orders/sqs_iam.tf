@@ -41,7 +41,11 @@ module "sqs_policy" {
   source = "../../../../modules/__iam_policy"
   name = "sqs-policy-retail-store"
   team = var.team
+<<<<<<< HEAD
   policy = data.aws_iam_policy_document.orders_sqs_policy.json
+=======
+  policy = [data.aws_iam_policy_document.orders_sqs_policy.json]
+>>>>>>> cbbb6cea38fe8ada970997e6ec3aa4aa102cb3a6
   path = "/orders/"
   env = var.env
 }
