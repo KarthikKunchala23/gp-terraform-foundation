@@ -87,7 +87,7 @@ variable "team" {
   default     = "carts"
 }
 
-variable "environment" {
+variable "env" {
   description = "Environment Name for the app"
   type        = string
   default     = "dev"
