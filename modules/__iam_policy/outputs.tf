@@ -1,19 +1,29 @@
 output "arn" {
-  value = aws_iam_policy.policy.arn
+  value = {
+    for k, v in aws_iam_policy.policy : k => v.arn
+  }
 }
 
 output "id" {
-  value = aws_iam_policy.policy.id
+  value = {
+    for k, v in aws_iam_policy.policy : k => v.id
+  }
 }
 
 output "description" {
-  value = aws_iam_policy.policy.description
+  value = {
+    for k, v in aws_iam_policy.policy : k => v.description
+  }
 }
 
 output "name" {
-  value = aws_iam_policy.policy.name
+  value = {
+    for k, v in aws_iam_policy.policy : k => v.name
+  }
 }
 
-output "polic" {
-  value = aws_iam_policy.policy.policy
+output "policy" {
+  value = {
+    for k, v in aws_iam_policy.policy : k => v.policy
+  }
 }

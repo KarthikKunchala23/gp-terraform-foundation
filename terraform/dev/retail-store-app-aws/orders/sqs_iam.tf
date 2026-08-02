@@ -41,11 +41,9 @@ module "sqs_policy" {
   source = "../../../../modules/__iam_policy"
   name = "sqs-policy-retail-store"
   team = var.team
-<<<<<<< HEAD
-  policy = data.aws_iam_policy_document.orders_sqs_policy.json
-=======
-  policy = [data.aws_iam_policy_document.orders_sqs_policy.json]
->>>>>>> cbbb6cea38fe8ada970997e6ec3aa4aa102cb3a6
+  
+  policy = { orders_sqs_policy = data.aws_iam_policy_document.orders_sqs_policy.json }
+
   path = "/orders/"
   env = var.env
 }
@@ -55,6 +53,6 @@ module "sqs_iam_role" {
   role_name = "sqs-role"
   team = var.team
   assume_role_trust_policy = data.aws_iam_policy_document.assume_role.json
-  policy_arn = [ module.sqs_policy.arn ]
+  policy_arn = module.sqs_policy.arn
   env = var.env
 }

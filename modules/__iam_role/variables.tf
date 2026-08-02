@@ -16,7 +16,7 @@ variable "assume_role_trust_policy" {
 
 variable "policy_arn" {
   description = "List of policy arn to be attached to role"
-  type = list(string)
+  type = map(string)
 }
 
 variable "env" {

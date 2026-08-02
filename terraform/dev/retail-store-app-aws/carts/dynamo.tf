@@ -3,7 +3,7 @@ module "cart_table" {
   source = "../../../../modules/__dynamodb"
 
   team         = var.team
-  environment  = var.environment
+  env          = var.env
   name         = "dynamodb-table"
   billing_mode = "PAY_PER_REQUEST"
 
@@ -34,7 +34,7 @@ module "cart_table" {
   ]
 
   tags = {
-    Environment = var.environment
+    Environment = var.env
     Team        = var.team
     Region      = "ap-south-1"
   }

@@ -1,6 +1,6 @@
 resource "aws_dynamodb_table" "this" {
 
-  name         = "${var.team}-${var.environment}-${var.name}"
+  name         = "${var.team}-${var.env}-${var.name}"
   billing_mode = var.billing_mode
 
   hash_key  = var.hash_key
