@@ -32,11 +32,11 @@ This project provides production-ready Terraform modules for commonly used AWS s
 │   ├── __security_groups
 │   ├── __sqs
 │   ├── __vpc
+│   └── __event_bridge
 │   └── security_group
 │
 └── terraform
     └── dev
-        └── retail-store-app-aws
 ```
 
 ---
@@ -53,6 +53,7 @@ This project provides production-ready Terraform modules for commonly used AWS s
 | Security Groups | Creates reusable security groups with configurable ingress and egress rules                       |
 | IAM Roles       | Creates IAM Roles with trust policies                                                             |
 | IAM Policies    | Creates reusable IAM policies and attaches them to IAM roles                                      |
+| Event Bridge    | Creates reusable Amazon Event Bridge Rules and Targets.                                           |
 
 ---
 
@@ -117,6 +118,8 @@ terraform-state/
 ├── orders
 │   └── terraform.tfstate
 └── catalog
+│     └── terraform.tfstate
+└── platform
     └── terraform.tfstate
 ```
 
@@ -166,6 +169,7 @@ module "carts_dynamodb" {
 * AWS IAM Roles
 * AWS IAM Policies
 * Amazon EC2 Security Groups
+* Amazon Event Bridge
 
 ---
 
@@ -192,7 +196,7 @@ module "carts_dynamodb" {
 * AWS WAF Module
 * AWS Lambda Module
 * Amazon SNS Module
-* Amazon EventBridge Module
+* Amazon EventBridge Module✅
 * CI/CD GitHub Actions
 * Automated Security Scanning
 * Terraform Testing
@@ -215,7 +219,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/KarthikKunchala23/gp-terraform-foundation.git
 
-cd gp-terraform-foundation
+cd gp-terraform-foundation/terraform/dev/paltform
 ```
 
 Initialize Terraform:
