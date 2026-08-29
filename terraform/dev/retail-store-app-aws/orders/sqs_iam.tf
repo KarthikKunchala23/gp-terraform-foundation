@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "orders_sqs_policy" {
     ]
 
     resources = [ 
-        module.orders_queue.orders_sqs_queue_arn
+        module.orders_queue.sqs_queue_arn
      ]
   }
 }

@@ -27,5 +27,5 @@ module "karpenter-event-rules" {
     }
   }
   
-  sqs_queue_arn = module.karpenter_queue.karpenter_sqs_queue_arn
+  sqs_queue_arn = module.karpenter_queue.sqs_queue_arn
 }

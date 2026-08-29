@@ -31,5 +31,5 @@ variable "environment" {
 variable "vpc_id" {
   description = "The VPC ID for the cache cluster"
   type        = string
-  default     = "vpc-0b135162059269870"
+  default     = "vpc-0d6dbb80bdcd558d0"
 }

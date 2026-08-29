@@ -5,7 +5,7 @@ module "karpenter_queue" {
 }
 
 resource "aws_sqs_queue_policy" "karpenter_interruption" {
-  queue_url = module.karpenter_queue.karpenter_sqs_queue_url
+  queue_url = module.karpenter_queue.sqs_queue_url
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
@@ -15,13 +15,13 @@ resource "aws_sqs_queue_policy" "karpenter_interruption" {
           Service = ["events.amazonaws.com", "sqs.amazonaws.com"]
         }
         Action   = "sqs:SendMessage"
-        Resource = module.karpenter_queue.karpenter_sqs_queue_arn
+        Resource = module.karpenter_queue.sqs_queue_arn
       },
       {
         Sid      = "DenyHTTP"
         Effect   = "Deny"
         Action   = "sqs:*"
-        Resource = module.karpenter_queue.karpenter_sqs_queue_arn
+        Resource = module.karpenter_queue.sqs_queue_arn
         Condition = {
           Bool = {
             "aws:SecureTransport" = "false"
