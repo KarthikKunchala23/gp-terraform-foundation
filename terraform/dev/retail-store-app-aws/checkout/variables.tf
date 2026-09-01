@@ -29,7 +29,11 @@ variable "environment" {
 }
 
 variable "vpc_id" {
-  description = "The VPC ID for the cache cluster"
+  description = "The VPC ID for the cache cluster. Supplied by retail-store-tf-install.sh from the vpc module output."
   type        = string
-  default     = "vpc-0d6dbb80bdcd558d0"
+
+  validation {
+    condition     = can(regex("^vpc-[0-9a-f]+$", var.vpc_id))
+    error_message = "vpc_id must be a VPC id such as vpc-0123456789abcdef0."
+  }
 }

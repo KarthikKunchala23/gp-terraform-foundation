@@ -21,9 +21,13 @@ variable "env" {
 }
 
 variable "vpc_id" {
-  description = "vpc id for sg"
+  description = "vpc id for sg. Supplied by retail-store-tf-install.sh from the vpc module output."
   type = string
-  default = "vpc-0d6dbb80bdcd558d0"
+
+  validation {
+    condition     = can(regex("^vpc-[0-9a-f]+$", var.vpc_id))
+    error_message = "vpc_id must be a VPC id such as vpc-0123456789abcdef0."
+  }
 }
 
 ## VPC Variables
