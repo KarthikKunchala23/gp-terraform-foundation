@@ -1,30 +1,30 @@
 data "aws_iam_policy_document" "carts_dynamodb_policy" {
-    statement {
-        sid = "CartsDynamoDBAccess"
-        effect = "Allow"
+  statement {
+    sid    = "CartsDynamoDBAccess"
+    effect = "Allow"
 
-        actions = [
-          "dynamodb:CreateTable",
-          "dynamodb:DeleteTable",
-          "dynamodb:DescribeTable",
-          "dynamodb:UpdateTable",
-          "dynamodb:PutItem",
-          "dynamodb:GetItem",
-          "dynamodb:DeleteItem",
-          "dynamodb:Query",
-          "dynamodb:Scan",
-          "dynamodb:UpdateItem",
-          "dynamodb:BatchGetItem",
-          "dynamodb:BatchWriteItem",
-          "dynamodb:DescribeTimeToLive",
-          "dynamodb:ListTables",
-          "dynamodb:ListTagsOfResource"
-        ]
+    actions = [
+      "dynamodb:CreateTable",
+      "dynamodb:DeleteTable",
+      "dynamodb:DescribeTable",
+      "dynamodb:UpdateTable",
+      "dynamodb:PutItem",
+      "dynamodb:GetItem",
+      "dynamodb:DeleteItem",
+      "dynamodb:Query",
+      "dynamodb:Scan",
+      "dynamodb:BatchGetItem",
+      "dynamodb:BatchWriteItem",
+      "dynamodb:DescribeTimeToLive",
+      "dynamodb:ListTables",
+      "dynamodb:ListTagsOfResource"
+    ]
 
-        resources = [ 
-            module.cart_table.table_arn
-         ]
-    }
+    resources = [
+      module.cart_table.table_arn,
+      "${module.cart_table.table_arn}/index/*"
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "dynamo_assume_role" {

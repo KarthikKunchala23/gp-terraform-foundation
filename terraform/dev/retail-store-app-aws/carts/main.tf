@@ -24,7 +24,7 @@ provider "aws" {
       tags = {
         Team = var.team
         Environment = var.env
-        Region = "ap-south-1"
+        Region = "us-west-2"
         Created_By = "gp-terraform-foundation"
       }
     }

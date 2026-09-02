@@ -92,3 +92,9 @@ variable "env" {
   type        = string
   default     = "dev"
 }
+
+variable "region" {
+  description = "AWS Region for the app"
+  type        = string
+  default     = "us-west-2"
+}

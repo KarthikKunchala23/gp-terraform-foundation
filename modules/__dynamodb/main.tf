@@ -53,6 +53,7 @@ resource "aws_dynamodb_table" "this" {
 
   stream_enabled   = var.stream_enabled
   stream_view_type = var.stream_enabled ? var.stream_view_type : null
+  region           = var.region
 
   tags = var.tags
 }

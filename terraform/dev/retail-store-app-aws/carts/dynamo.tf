@@ -4,8 +4,9 @@ module "cart_table" {
 
   team         = var.team
   env          = var.env
-  name         = "dynamodb-table"
+  name         = "Items"
   billing_mode = "PAY_PER_REQUEST"
+  region      = "us-west-2"
 
   hash_key = "id"
 
@@ -27,7 +28,7 @@ module "cart_table" {
 
   global_secondary_indexes = [
     {
-      name            = "CustomerIndex"
+      name            = "idx_global_customerId"
       hash_key        = "customerId"
       projection_type = "ALL"
     }
@@ -36,6 +37,6 @@ module "cart_table" {
   tags = {
     Environment = var.env
     Team        = var.team
-    Region      = "ap-south-1"
+    Region      = "us-west-2"
   }
 }

@@ -36,6 +36,10 @@ data "aws_iam_policy_document" "assume_role" {
   }
 }
 
+data "aws_iam_policy" "orders_secrets_policy" {
+  name = "gp-orders-db-secret-manager-policy_dev_orders"
+}
+
 
 module "sqs_policy" {
   source = "../../../../modules/__iam_policy"
@@ -53,6 +57,9 @@ module "sqs_iam_role" {
   role_name = "sqs-role"
   team = var.team
   assume_role_trust_policy = data.aws_iam_policy_document.assume_role.json
-  policy_arn = module.sqs_policy.arn
+  policy_arn = {
+    orders_secrets_policy = data.aws_iam_policy.orders_secrets_policy.arn,
+    orders_sqs_policy = module.sqs_policy.arn["orders_sqs_policy"]
+  }
   env = var.env
 }
