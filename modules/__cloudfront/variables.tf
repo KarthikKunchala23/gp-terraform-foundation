@@ -75,3 +75,9 @@ variable "assets_path_pattern" {
   type        = string
   default     = "assets/*"
 }
+
+variable "geo_restriction_locations" {
+  description = "List of country codes for geo-restriction."
+  type        = list(string)
+  default     = optional(["PK", "CN", "BD"])
+}

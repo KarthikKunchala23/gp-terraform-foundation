@@ -8,6 +8,7 @@ resource "aws_elasticache_cluster" "redis-cache" {
   port                 = 6379
   security_group_ids  = var.security_group_ids
   subnet_group_name    = aws_elasticache_subnet_group.cache-subnet-group.name
+  snapshot_retention_limit = var.node_type == "cache.t1.micro" ? 0 : var.snapshot_retention_limit
 
   tags = {
     Name = "${var.team}-${var.cluster_id}"

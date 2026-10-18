@@ -29,3 +29,9 @@ variable "subnet_ids" {
   description = "A list of subnet IDs to associate with the cache cluster"
   type        = list(string)
 }
+
+variable "snapshot_retention_limit" {
+  description = "The number of days to retain automatic snapshots. Set to 0 to disable snapshots."
+  type        = number
+  default     = 7
+}
