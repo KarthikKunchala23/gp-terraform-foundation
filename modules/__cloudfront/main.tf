@@ -75,7 +75,8 @@ resource "aws_cloudfront_distribution" "this" {
 
   restrictions {
     geo_restriction {
-      restriction_type = "none"
+      restriction_type = "blacklist"
+      locations        = optional(var.geo_restriction_locations)
     }
   }
 
@@ -83,7 +84,7 @@ resource "aws_cloudfront_distribution" "this" {
     cloudfront_default_certificate = !local.custom_domain_enabled
     acm_certificate_arn            = local.custom_domain_enabled ? var.acm_certificate_arn : null
     ssl_support_method             = local.custom_domain_enabled ? "sni-only" : null
-    minimum_protocol_version       = local.custom_domain_enabled ? "TLSv1.2_2021" : null
+    minimum_protocol_version       = local.custom_domain_enabled ? "TLSv1.2_2021" : "TLSv1.2_2019"
   }
 
   lifecycle {
