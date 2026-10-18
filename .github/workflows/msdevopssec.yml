@@ -19,3 +19,4 @@ jobs:
       scan_terraform: true
       scan_application_code: false
       scan_container: false
+      scan_trivy: false
